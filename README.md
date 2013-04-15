@@ -1,0 +1,4 @@
+dirManager
+==========
+
+Iterator filter directory
