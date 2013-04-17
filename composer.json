@@ -1,0 +1,27 @@
+{
+    "name": "lpdeveloper/diretorio-iterator",
+    "description": "Diretorio Iterator e Filtro",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Luis Paulo",
+            "email": "lpdeveloper@hotmail.com.br"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "pear.php.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "dirManager"}
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
