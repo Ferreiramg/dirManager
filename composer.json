@@ -1,5 +1,5 @@
 {
-    "name": "lpdeveloper/diretorio-iterator",
+    "name": "lpdeveloper/directory-iterator",
     "description": "Diretorio Iterator e Filtro",
     "type": "library",
     "authors": [
@@ -8,15 +8,10 @@
             "email": "lpdeveloper@hotmail.com.br"
         }
     ],
-    "repositories": [
-        {
-            "type": "pear",
-            "url": "pear.php.net"
-        }
-    ],
     "require": {
         "php": ">=5.4"
     },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "": "dirManager"}
