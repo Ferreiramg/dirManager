@@ -5,6 +5,7 @@
  *
  * @author Luis Paulo
  */
+namespace dirIterator;
 class TestDirUsage extends \PHPUnit_Framework_TestCase {
 
     public function testReturnDirectoryIteratorInstance() {

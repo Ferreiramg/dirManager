@@ -6,7 +6,7 @@
  * @author Luis Paulo
  */
 
-namespace Filters;
+namespace dirIterator\Filters;
 
 class MatchFilter extends Filter {
 

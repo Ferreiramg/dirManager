@@ -5,6 +5,9 @@
  *
  * @author Luis Paulo
  */
+
+namespace dirIterator;
+
 class dirUsage implements \dirInterface {
 
     public $path = "", $recursive;

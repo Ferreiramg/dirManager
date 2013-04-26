@@ -1,6 +1,6 @@
 <?php
 
-namespace Filters;
+namespace dirIterator\Filters;
 
 abstract class Filter extends \FilterIterator {
 

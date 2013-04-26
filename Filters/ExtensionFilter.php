@@ -6,7 +6,7 @@
  * @author Luis
  */
 
-namespace Filters;
+namespace dirIterator\Filters;
 
 class ExtensionFilter extends Filter {
 
