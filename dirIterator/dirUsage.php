@@ -8,7 +8,7 @@
 
 namespace dirIterator;
 
-class dirUsage implements \dirInterface {
+class dirUsage implements dirInterface {
 
     public $path = "", $recursive;
 
