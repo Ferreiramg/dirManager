@@ -10,7 +10,6 @@ namespace dirIterator\Filters;
 
 class ListByType extends Filter {
 
-    private $_it;
     public $type = 'file';
     private static $increment = 0;
 
@@ -19,6 +18,15 @@ class ListByType extends Filter {
         $this->_it = $iterator;
         $this->type = $type;
         self::$increment++;
+    }
+
+    public function delete() {
+        if ($this->type === 'file')
+            return parent::delete();
+        else {
+            if (!$this->_it->isDot())
+                return rmdir($this->_it->getPathName());
+        }
     }
 
     public function accept() {

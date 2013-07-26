@@ -10,7 +10,7 @@ namespace dirIterator\Filters;
 
 class MatchFilter extends Filter {
 
-    private $match, $_it;
+    private $match;
 
     public function __construct(\Iterator $iterator, $matchs = '') {
         parent::__construct($iterator);

@@ -10,7 +10,7 @@ namespace dirIterator\Filters;
 
 class ExtensionFilter extends Filter {
 
-    private $_ext, $_it, $_whitelisted;
+    private $_ext, $_whitelisted;
     private static $ponter = 0;
 
     public function __construct(\Iterator $it, $ext, $whitelisted = false) {

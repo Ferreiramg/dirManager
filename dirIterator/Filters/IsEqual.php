@@ -10,11 +10,11 @@ namespace dirIterator\Filters;
 
 class IsEqual extends Filter {
 
-    private $iterator, $filter;
+    private $filter;
     private static $ponter = 0;
 
     public function __construct(\Iterator $iterator, $filter) {
-        $this->iterator = $iterator;
+        $this->_it = $iterator;
         $this->filter = $filter;
         self::$ponter++;
 
@@ -22,7 +22,7 @@ class IsEqual extends Filter {
     }
 
     public function accept() {
-        if (strcasecmp($this->iterator->currentElement[0], $this->filter) == 0)
+        if (strcasecmp($this->_it->currentElement[0], $this->filter) == 0)
             return true;
         return false;
     }

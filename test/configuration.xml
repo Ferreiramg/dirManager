@@ -1,8 +1,4 @@
 <?xml version="1.0"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 
 <!-- see http://www.phpunit.de/wiki/Documentation -->
 <phpunit bootstrap="../../vendor/autoload.php"
@@ -11,4 +7,8 @@ and open the template in the editor.
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          stopOnFailure="true">
+    <logging>
+        <!--log type="coverage-text" target="php://stdout" showUncoveredFiles="false" -->
+        <log type="testdox-text" target="php://stdout" />
+    </logging>
 </phpunit>

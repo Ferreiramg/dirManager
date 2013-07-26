@@ -5,7 +5,9 @@
  *
  * @author Luis Paulo
  */
+
 namespace dirIterator;
+
 class TestDirUsage extends \PHPUnit_Framework_TestCase {
 
     public function testReturnDirectoryIteratorInstance() {
@@ -42,6 +44,21 @@ class TestDirUsage extends \PHPUnit_Framework_TestCase {
         $this->assertInstanceof('Iterator', $filter2);
         $this->assertInstanceof('Iterator', $filter3);
         $this->assertInstanceof('Iterator', $filter4);
+    }
+
+    public function testActionDeleteForFilters() {
+        for ($i = 0; $i <= 10; ++$i) {
+            file_put_contents(__DIR__ . '\tmp\error' . $i . '.log', "empty file");
+        }
+
+        $dir = new dirUsage(__DIR__ . '\tmp');
+        $filter = new Filters\ListByType($dir->getIterator());
+
+        $filter->next();
+        $this->assertEquals($filter->getFileName(), 'error0.log');
+        $this->assertTrue($filter->delete());
+        $this->assertFileNotExists(__DIR__ . '\tmp\error0.log');
+
     }
 
 }
