@@ -1,14 +1,13 @@
 <?php
 
+namespace dirIterator;
+
 /**
  * Description of TestDirUsage
  *
  * @author Luis Paulo
  */
-
-namespace dirIterator;
-
-class TestDirUsage extends \PHPUnit_Framework_TestCase {
+class DirUsageTest extends \PHPUnit_Framework_TestCase {
 
     public function testReturnDirectoryIteratorInstance() {
         $dir = new dirUsage('\\');
@@ -58,7 +57,17 @@ class TestDirUsage extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($filter->getFileName(), 'error0.log');
         $this->assertTrue($filter->delete());
         $this->assertFileNotExists(__DIR__ . '\tmp\error0.log');
+    }
 
+    public function testDeleteAllFiles() {
+        $dir = new dirUsage(__DIR__ . '\tmp');
+        $filter = new Filters\ListByType($dir->getIterator());
+
+        for ($filter->rewind(); $filter->valid(); $filter->next())
+            $r = $filter->delete();
+        ;
+        $this->asserttrue($r);
+        $this->assertFileNotExists(__DIR__ . '\tmp\error10.log');
     }
 
 }

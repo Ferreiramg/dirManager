@@ -2,7 +2,7 @@
 
 <!-- see http://www.phpunit.de/wiki/Documentation -->
 <phpunit bootstrap="../../vendor/autoload.php"
-         colors="false"
+         colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"

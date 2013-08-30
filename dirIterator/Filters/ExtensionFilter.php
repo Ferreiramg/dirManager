@@ -1,13 +1,12 @@
 <?php
 
+namespace dirIterator\Filters;
+
 /**
  * Description of ExtensionFilter
  *
  * @author Luis
  */
-
-namespace dirIterator\Filters;
-
 class ExtensionFilter extends Filter {
 
     private $_ext, $_whitelisted;
