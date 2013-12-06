@@ -11,12 +11,11 @@ namespace dirIterator\Filters;
 class IsEqual extends Filter {
 
     private $filter;
-    private static $ponter = 0;
 
     public function __construct(\Iterator $iterator, $filter) {
         $this->_it = $iterator;
         $this->filter = $filter;
-        self::$ponter++;
+        self::$increment++;
 
         parent::__construct($iterator);
     }
@@ -28,7 +27,7 @@ class IsEqual extends Filter {
     }
 
     public function count() {
-        return self::$ponter;
+        return self::$increment;
     }
 
 }

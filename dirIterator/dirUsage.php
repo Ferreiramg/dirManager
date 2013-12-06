@@ -13,7 +13,7 @@ class dirUsage implements dirInterface {
     public $path = "", $recursive;
 
     function __construct($path, $recursive = false) {
-        $this->path = $path == "/" || $path == "\\" ? dirname('.') : $path;
+        $this->path = $path == "/" || $path == "\\" ? __DIR__ : $path;
         $this->recursive = $recursive;
     }
 

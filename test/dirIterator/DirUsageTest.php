@@ -12,6 +12,7 @@ class DirUsageTest extends \PHPUnit_Framework_TestCase {
     public function testReturnDirectoryIteratorInstance() {
         $dir = new dirUsage('\\');
 
+        var_dump($dir);
         $this->assertInstanceof('DirectoryIterator', $dir->getIterator());
         $dir->recursive = true;
         $this->assertInstanceof('RecursiveIteratorIterator', $dir->getIterator());
@@ -45,20 +46,6 @@ class DirUsageTest extends \PHPUnit_Framework_TestCase {
         $this->assertInstanceof('Iterator', $filter4);
     }
 
-    public function testActionDeleteForFilters() {
-        for ($i = 0; $i <= 10; ++$i) {
-            file_put_contents(__DIR__ . '\tmp\error' . $i . '.log', "empty file");
-        }
-
-        $dir = new dirUsage(__DIR__ . '\tmp');
-        $filter = new Filters\ListByType($dir->getIterator());
-
-        $filter->next();
-        $this->assertEquals($filter->getFileName(), 'error0.log');
-        $this->assertTrue($filter->delete());
-        $this->assertFileNotExists(__DIR__ . '\tmp\error0.log');
-    }
-
     public function testDeleteAllFiles() {
         $dir = new dirUsage(__DIR__ . '\tmp');
         $filter = new Filters\ListByType($dir->getIterator());
@@ -68,6 +55,37 @@ class DirUsageTest extends \PHPUnit_Framework_TestCase {
         ;
         $this->asserttrue($r);
         $this->assertFileNotExists(__DIR__ . '\tmp\error10.log');
+    }
+
+    public function testDeletEspecifyFilesType() {
+        $type = '.txt';
+        for ($i = 0; $i <= 5; ++$i) {
+            if ($i > 3) {
+                $type = '.log';
+            }
+            file_put_contents(__DIR__ . '\tmp\files' . $i . $type, "empty file");
+        }
+        ///////////////
+        $dir = new dirUsage(__DIR__ . '\tmp');
+        $filter = new Filters\ExtensionFilter($dir->getIterator(), ['log'], true); //delete *.log files
+
+        for ($filter->rewind(); $filter->valid(); $filter->next())
+            $filter->delete();
+        ;
+        $this->assertFileNotExists(__DIR__ . '\tmp\files4.log');
+        $this->assertFileNotExists(__DIR__ . '\tmp\files5.log');
+    }
+
+    public function testDeleteFolder() {
+        if (!file_exists(__DIR__ . '\tmp\for_delete'))
+            mkdir(__DIR__ . '\tmp\for_delete');
+        $dir = new dirUsage(__DIR__ . '\tmp');
+        $filter = new Filters\ListByType($dir->getIterator(), 'dir');
+
+        for ($filter->rewind(); $filter->valid(); $filter->next())
+            $r = $filter->delete();
+        ;
+        $this->asserttrue($r);
     }
 
 }

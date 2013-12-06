@@ -16,6 +16,7 @@ class MatchFilter extends Filter {
         parent::__construct($iterator);
         $this->_it = $iterator;
         $this->match = $matchs;
+        self::$increment++;
     }
 
     public function accept() {
@@ -25,7 +26,7 @@ class MatchFilter extends Filter {
     }
 
     public function count() {
-        
+        return self::$increment;
     }
 
 }

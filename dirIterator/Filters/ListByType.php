@@ -11,7 +11,6 @@ namespace dirIterator\Filters;
 class ListByType extends Filter {
 
     public $type = 'file';
-    private static $increment = 0;
 
     public function __construct(\Iterator $iterator, $type = 'file') {
         parent::__construct($iterator);

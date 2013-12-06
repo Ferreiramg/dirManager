@@ -10,14 +10,13 @@ namespace dirIterator\Filters;
 class ExtensionFilter extends Filter {
 
     private $_ext, $_whitelisted;
-    private static $ponter = 0;
 
     public function __construct(\Iterator $it, $ext, $whitelisted = false) {
         parent::__construct($it);
         $this->_it = $it;
         $this->_ext = $ext;
         $this->_whitelisted = $whitelisted;
-        self::$ponter++;
+        self::$increment++;
     }
 
     public function accept() {
@@ -50,7 +49,7 @@ class ExtensionFilter extends Filter {
     }
 
     public function count() {
-        return self::$ponter;
+        return self::$increment;
     }
 
 }
