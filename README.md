@@ -10,5 +10,6 @@ dirManager
 
     foreach($filter as $file){
         echo $file->getNameFile();
-    }
+    } 
+?>
 ```
